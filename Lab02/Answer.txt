@@ -1,0 +1,30 @@
+Trần Huy Hoàng 20210386 
+
+Trả lời các câu hỏi:
+
+1. If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
+
+	=> Trả lời: Java không cho phép chúng ta thực hiện điều này bởi vì 2 phương thức khởi tạo này có cùng chữ ký là DigitalVideoDisc(String).
+
+2.Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compared to an array parameter. What do you prefer in this case?
+
+	=> Trả lời: Khi thử thêm phương thức addDigitalVideoDisc(DigitalVideoDisc... dvdList) cho phép truyền số lượng đối số tùy ý cho dvd thì Eclipse sẽ báo lỗi "Duplicate method" do có cũng chữ ký với phương thức addDigitalVideoDisc(DigitalVideoDisc [] dvdList). Khi so sánh addDigitalVideoDisc(DigitalVideoDisc... dvdList) với addDigitalVideoDisc(DigitalVideoDisc [] dvdList), em thích phương thức addDigitalVideoDisc(DigitalVideoDisc... dvdList) hơn vì phương thức này linh hoạt hơn.
+
+3. Is JAVA a Pass by Value or a Pass by Reference programming language?
+
+	=> Trả lời: Java là ngôn ngữ lập trình "Pass by Value"
+
+4. After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+
+	=> Trả lời: Lý do là vì phương thức swap(Object o1, Object o2) không hoạt động đúng (Java sử dụng Pass by value khi truyền tham số cho phương thức)
+Trong Java tất cả các object sau khi khởi tạo đều được lưu trữ trong vùng nhớ heap. Những object này sẽ được tham chiếu bởi các biến reference khác nhau. Hay nói cách khác các biến này sẽ lưu trữ địa chỉ của các object mà chúng tham chiếu. Các biến reference này được lưu trữ trong trong vùng nhớ Stack.
+
+Khi một biến reference (địa chỉ của object) được truyền vào tham số của method thì một bản sao chép của chúng được tạo ra và lưu vào Stack. Khi thực hiện swap(jungleDVD, cinderellaDVD), Java sẽ thực hiện như sau: đầu tiên tạo ra 1 bản sao của biến tham chiếu jungleDVD, giả sử là copy1; và tạo ra 1 bản sao của biến tham chiếu cinderellaDVD, giả sử là copy2. Ban đầu copy1 trỏ đến cùng đối tượng mà jungleDVD đang trỏ đến, copy2 trỏ đến cùng đối tượng mà cinderellaDVD đang trỏ đến. Sau khi thực hiện phương thức swap(jungleDVD, cinderellaDVD), copy1 sẽ trỏ đến cùng đối tượng mà cinderellaDVD đang trỏ đến, còn copy2 lại trỏ đến cùng đối tượng mà jungleDVD trỏ đến. Tuy nhiên các biến tham chiếu jungleDVD và cinderellaDVD không thay đổi, chúng vẫn trỏ đến các đối tượng như cũ.   
+
+Vậy nên sau khi thực hiện swap(jungleDVD, cinderellaDVD), title của 2 object này vẫn giữ nguyên.
+
+5. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+
+ 	=> Trả lời: Sau khi thực hiện changeTitle(jungleDVD, cinderellaDVD.getTitle()), title của 2 object đã thay đổi bởi vì khi thực hiện changeTitle(jungleDVD, cinderellaDVD.getTitle()), Java sẽ thực hiện như sau: Tạo 1 bản sao của biến tham chiếu jungleDVD, giả sử là copyJungle. Lúc này, copyJungle và jungleDVD đang cùng trỏ đến 1 đối tượng. Tiếp theo khởi tạo String oldTitle và gán bằng dvd.getTitle(), lúc này oldTitle = "Jungle". Tiếp theo thực hiện lệnh dvd.setTitle(title) (ở đây title = cinderellaDVD.getTitle(), tức là title = "Cinderella"). Lúc này, title của đối tượng mà copyJungle và jungleDVD đang cùng trỏ đến sẽ là "Cinderella". Cuối cùng thực hiện dvd = new DigitalVideoDisc(oldTitle). Khi này, copyJungle sẽ trỏ đến 1 đối tượng DigitalVideoDisc mới được khởi tạo, có title = oldTitle, tức là title = Jungle" và không còn trỏ đến đối tượng mà jungleDVD đang trỏ đến nữa. 
+
+Tóm lại, sau khi thực hiện changeTitle(jungleDVD, cinderellaDVD.getTitle()) thì title của đối tượng mà JungleDVD trỏ đến đã thay đổi (và trở thành "Cinderella").
