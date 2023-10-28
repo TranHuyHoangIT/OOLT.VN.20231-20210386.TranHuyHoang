@@ -21,6 +21,58 @@ public class Cart {
 			this.setQtyOrdered(quantity);
 		}
 	}
+	// Overloading by differing types of parameter
+	public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
+		int length = dvdList.length;
+		int quantity = this.getQtyOrdered();
+		if(length + quantity > MAX_NUMBERS_ORDERED) {
+			System.out.println("Can not add list of DVDs. The cart is almost full");
+		}
+		else {
+			for (int i = 0; i < length; i++) {
+	            this.itemsOrdered[quantity] = dvdList[i];
+	            System.out.println("Disc " + dvdList[i].getTitle() + " has been added.");
+	            quantity++;
+	        }
+	        this.setQtyOrdered(quantity);
+		}
+	}
+	
+//  Try to add method addDigitalVideoDisc (DigitalVideoDisc... dvdList) allows to pass an arbitrary number of arguments for dvd.
+//	public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
+//		int length = dvdList.length;
+//		int quantity = this.getQtyOrdered();
+//		if(length + quantity > MAX_NUMBERS_ORDERED) {
+//			System.out.println("Can not add list of DVDs. The cart is almost full");
+//		}
+//		else {
+//			for (int i = 0; i < length; i++) {
+//	            this.itemsOrdered[quantity] = dvdList[i];
+//	            System.out.println("Disc " + dvdList[i].getTitle() + " has been added.");
+//	            quantity++;
+//	        }
+//	        this.setQtyOrdered(quantity);
+//		}
+//	}
+	
+//  Overloading by differing the number of parameters
+	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+	    int quantity = this.getQtyOrdered();
+
+	    if (quantity + 2 > MAX_NUMBERS_ORDERED) {
+	        System.out.println("Can not add two DVDs. The cart is almost full.");
+	    } else {
+	        this.itemsOrdered[quantity] = dvd1;
+	        System.out.println("Disc " + dvd1.getTitle() + " has been added.");
+	        quantity++;
+
+	        this.itemsOrdered[quantity] = dvd2;
+	        System.out.println("Disc " + dvd2.getTitle() + " has been added.");
+	        quantity++;
+
+	        this.setQtyOrdered(quantity);
+	    }
+	}
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 	    int quantity = this.getQtyOrdered();    
 	    if (quantity <= 0) {
