@@ -7,11 +7,14 @@ public class Cart {
 	public int getQtyOrdered() {
 		return qtyOrdered;
 	}
+	
 	public void setQtyOrdered(int qtyOrdered) {
 		this.qtyOrdered = qtyOrdered;
 	}
+	
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		int quantity = this.getQtyOrdered();
+		
 		if (quantity >= MAX_NUMBERS_ORDERED) {
 			System.out.println("The cart is almost full.");
 		} else {
@@ -21,10 +24,12 @@ public class Cart {
 			this.setQtyOrdered(quantity);
 		}
 	}
+	
 	// Overloading by differing types of parameter
 	public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
 		int length = dvdList.length;
 		int quantity = this.getQtyOrdered();
+		
 		if(length + quantity > MAX_NUMBERS_ORDERED) {
 			System.out.println("Can not add list of DVDs. The cart is almost full");
 		}
@@ -73,8 +78,10 @@ public class Cart {
 	        this.setQtyOrdered(quantity);
 	    }
 	}
+	
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-	    int quantity = this.getQtyOrdered();    
+	    int quantity = this.getQtyOrdered();
+	    
 	    if (quantity <= 0) {
 	        System.out.println("The cart is empty!");
 	        return;
@@ -101,6 +108,7 @@ public class Cart {
 	        System.out.println("Disc " + disc.getTitle() + " was not found in the cart.");
 	    }
 	}
+	
 	public float totalCost() {
 		float total = 0;
 		for (int i = 0; i < this.getQtyOrdered(); i++) {
@@ -108,6 +116,7 @@ public class Cart {
 		}
 		return total;
 	}
+	
 	public void displayCart() {
 		System.out.println("----------DISPLAY CART----------");
 		for (int i = 0; i < this.getQtyOrdered(); i++) {
