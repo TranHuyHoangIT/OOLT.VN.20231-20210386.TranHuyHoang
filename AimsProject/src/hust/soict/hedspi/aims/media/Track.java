@@ -23,6 +23,11 @@ public class Track implements Playable  {
 	public Track() {
 		
 	}
+	
+	public Track(String title, int length) {
+		this.title = title;
+		this.length = length;
+	}
 
 	public void play() {
 			System.out.println("Playing track: " + this.getTitle());
