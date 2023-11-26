@@ -1,0 +1,61 @@
+Trần Huy Hoàng 20210386 OOP Lab 3
+
+1. Write a toString() method for the DigitalVideoDisc class. What should be the
+return type of this method?
+=> Phương thức toString nên trả về kiểu String
+
+2. Which classes are aggregates of other classes? Checking all constructors of whole classes if they initialize for their parts?
+=> Class CD là 1 tập hợp của class Track. Các constructor của class CD không khởi tạo class Track
+
+3.When overriding the equals() method of the Object class, you will have to cast the Object parameter obj to the type of Object that you are dealing with. 
+For example, in the Media class, you must cast the Object obj to a Media, and then check the equality of the two objects’ attributes as the above requirements 
+(i.e. title for Media; title and length forTrack). If the passing object is not an instance of Media, what happens?
+
+=> Nếu đối tượng truyền không phải là instance của Media, lỗi sẽ xảy ra khi chúng ta cố gắng truyền obj sang loại Media.
+
+4. What are the advantages of Polymorphism?
+=> 	+ Đa hình giúp code trở nên linh hoạt và dễ mở rộng. Một phương thức có thể xử lý nhiều loại đối tượng khác nhau thông qua một giao diện chung.
+
+	+ Có thể sử dụng lại code mà không cần thay đổi giao diện. Một phương thức có thể được triển khai lại trong nhiều lớp con khác nhau.
+
+	+ Tăng khả năng tái sử dụng và quản lý mã nguồn bằng cách tách biệt các thành phần của hệ thống.
+
+5. How is Inheritance useful to achieve Polymorphism in Java?
+=> Kế thừa cho phép lớp con ghi đè phương thức của lớp cha. Điều này tạo ra một hình thái mới của phương thức, giúp thực hiện đa hình.
+
+6.  What are the differences between Polymorphism and Inheritance in Java?
+-Đa hình (Polymorphism):
+	+ Là khả năng sử dụng một giao diện chung để tương tác với nhiều đối tượng khác nhau.
+	+ Có thể được đạt được thông qua cả kế thừa và giao diện.
+-Kế thừa (Inheritance):
+	+ Là quá trình lớp con nhận các thuộc tính và phương thức của lớp cha.
+	+ Đóng góp vào tính đa hình thông qua ghi đè phương thức.
+
+7. What class should implement the Comparable interface?
+→ Class Media và class Track
+
+8. In those classes, how should you implement the compareTo()method to reflect the ordering that we want?
+
+public abstract class Media implements Comparable<Media>{
+
+	public int compareTo(Media media) {
+    		return Comparator.comparing(Media::getCost)
+            	.thenComparing(Media::getTitle)
+            	.compare(this, media);
+	}
+
+}
+
+9. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+=> Không. Chúng ta chỉ có thể có một "ordering rules of the item".
+
+10. Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+=> Chúng ta có thể ghi đè phương thức compareTo() trong class DigitalVideoDisc
+
+public int compareTo(Media media) {
+    DigitalVideoDisc dvd = (DigitalVideoDisc) media;
+    return Comparator.comparing(DigitalVideoDisc::getTitle)
+            .thenComparing(DigitalVideoDisc::getLength, Comparator.reverseOrder())
+            .thenComparing(DigitalVideoDisc::getCost)
+            .compare(this, dvd);
+}
