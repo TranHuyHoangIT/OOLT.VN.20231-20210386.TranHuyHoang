@@ -1,0 +1,26 @@
+So sánh giữa các thành phần AWT và Swing:
+
+So sánh Top-level Containers trong Swing và AWT:
+AWT: Sử dụng các lớp như Frame, Dialog, và Applet làm các top-level containers.
+Swing: Sử dụng các lớp như JFrame, JDialog, và JApplet làm các top-level containers. Các lớp Swing này được xây dựng trên nền tảng AWT nhưng có thêm nhiều tính năng.
+
+So sánh tên lớp của các thành phần trong AWT và Swing:
+AWT: Các thành phần có tên bắt đầu với "java.awt", ví dụ: Button, Label.
+Swing: Các thành phần có tên bắt đầu với "javax.swing", ví dụ: JButton, JLabel. Các lớp Swing thường bắt đầu bằng "J" để phân biệt với các thành phần AWT tương ứng.
+
+So sánh xử lý sự kiện trong ứng dụng Swing và AWT:
+AWT: Sử dụng phương thức như addActionListener, addMouseListener để xử lý sự kiện.
+Swing: Sử dụng các lớp lắng nghe sự kiện (Listener) như ActionListener, MouseListener. Ngoài ra, Swing hỗ trợ các lớp lắng nghe nâng cao như Action, Document, Change để xử lý sự kiện một cách linh hoạt hơn.
+
+So sánh về giao diện của ứng dụng được phát triển bằng Swing và AWT:
+AWT: Giao diện dựa trên giao diện người dùng của hệ điều hành.
+Swing: Giao diện độc lập với hệ điều hành, do đó, ứng dụng Swing có thể có giao diện giống nhau trên các hệ điều hành khác nhau mà không cần sửa đổi code.
+
+Ưu điểm và nhược điểm:
+AWT:
+Ưu điểm: Tích hợp sẵn trong Java, giao diện theo hệ điều hành.
+Nhược điểm: Giới hạn về giao diện và tính tương thích.
+
+Swing:
+Ưu điểm: Giao diện độc lập với hệ điều hành, nhiều thành phần mở rộng.
+Nhược điểm: Yêu cầu tài nguyên hệ thống cao hơn, có thể chậm hơn AWT trong một số ít trường hợp.

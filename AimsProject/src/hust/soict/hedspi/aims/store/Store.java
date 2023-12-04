@@ -14,7 +14,7 @@ public class Store {
 	public boolean addMedia(Media media) {
     	if (!itemsInStore.contains(media)) {
 			itemsInStore.add(media);
-			System.out.printf("The item has been added\n");
+			System.out.printf("Item "+ media.getTitle() + " has been added\n");
 			return true;
 		} else {
 			System.out.println("The item is already in store\n");
@@ -29,7 +29,7 @@ public class Store {
         }
         else {
         	itemsInStore.remove(media);
-        	System.out.printf("The item has been removed\n");
+        	System.out.printf("Item " + media.getTitle() +" has been removed\n");
 	        return true;
         }
     }

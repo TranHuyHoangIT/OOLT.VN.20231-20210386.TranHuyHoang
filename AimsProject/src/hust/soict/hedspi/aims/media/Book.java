@@ -22,6 +22,7 @@ public class Book extends Media{
 	public Book(int id, String title, String category, float cost) {
 		super(id, title, category, cost);
 	}
+	
 	public boolean addAuthor(String authorName){
 	        if (authors.contains(authorName)) {
 	            System.out.println("This author already exists!");
