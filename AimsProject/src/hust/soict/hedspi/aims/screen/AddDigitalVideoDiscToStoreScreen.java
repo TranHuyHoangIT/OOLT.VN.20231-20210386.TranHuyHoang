@@ -79,7 +79,7 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
             else {
             	Float costFloat = Float.parseFloat(cost);
             	int lengthInt = Integer.parseInt(length);
-            	DigitalVideoDisc dvd = new DigitalVideoDisc(store.getItemsInStore().size(),title, category, costFloat, director, lengthInt);
+            	DigitalVideoDisc dvd = new DigitalVideoDisc(store.getItemsInStore().size() + 1, title, category, costFloat, director, lengthInt);
             	store.addMedia(dvd);
             	JOptionPane.showMessageDialog(null, "DVD " + dvd.getTitle() + " have added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             }

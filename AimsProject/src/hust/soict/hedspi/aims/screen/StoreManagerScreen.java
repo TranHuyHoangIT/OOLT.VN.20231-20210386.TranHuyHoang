@@ -102,21 +102,15 @@ public class StoreManagerScreen extends JFrame{
 	}
 	
 	JPanel createCenter() {
-        
         JPanel center = new JPanel();
         center.setLayout(new GridLayout(3, 3, 2, 2));
-
         ArrayList<Media> mediaInStore = store.getItemsInStore();
-//        for (int i = mediaInStore.size()-1; i >= mediaInStore.size()-9; i--) {
-//            MediaStore cell = new MediaStore(mediaInStore.get(i));
-//            center.add(cell);
-//        }
         
-	    for (int i = 0; i < Math.min(50, store.getItemsInStore().size()); i++) {
+	    for (int i = 0; i < Math.min(50, mediaInStore.size()); i++) {
 	    	MediaStore cell = new MediaStore(mediaInStore.get(i));
 	    	center.add(cell);
 	    }
-
+	    
         return center;
     }
 	
@@ -146,6 +140,7 @@ public class StoreManagerScreen extends JFrame{
     
 	public static void main(String[] args) {
 		Store store = new Store();
+		
 		Media media1 = new DigitalVideoDisc(1, "Harry Potter and Chamber of Secret", "Harry Potter", 3.0f, "Tran Huy Hoang", 120);
 		Media media2 = new CompactDisc(2, "CD1", "CompactDisc", 2.5f, "Tran Huy Hoang", 180);
 		CompactDisc tmp = (CompactDisc)media2;

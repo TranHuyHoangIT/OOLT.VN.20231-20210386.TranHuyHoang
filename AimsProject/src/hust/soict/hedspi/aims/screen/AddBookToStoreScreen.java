@@ -68,7 +68,7 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
             }
             else {
             	Float costFloat = Float.parseFloat(cost);
-            	Book book = new Book(store.getItemsInStore().size(), title, category, costFloat);
+            	Book book = new Book(store.getItemsInStore().size() + 1, title, category, costFloat);
             	book.addAuthor(author);
                 store.addMedia(book);
             	JOptionPane.showMessageDialog(null, "DVD " + book.getTitle() + " have added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
