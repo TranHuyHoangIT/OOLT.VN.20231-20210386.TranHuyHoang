@@ -67,7 +67,7 @@ public class AddItemToStoreScreen extends JFrame{
         JMenu smUpdateStore = new JMenu("Update Store");
         
         JMenuItem addBookButton = new JMenuItem("Add Book");
-        menu.add(addBookButton);
+        smUpdateStore.add(addBookButton);
         addBookButton.addActionListener(new AddBookListener());
         
 		JMenuItem addCDButton = new JMenuItem("Add CD");

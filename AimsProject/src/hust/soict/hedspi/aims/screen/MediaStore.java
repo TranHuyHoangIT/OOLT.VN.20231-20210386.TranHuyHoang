@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.management.loading.PrivateClassLoader;
 import javax.swing.*;
 
 import hust.soict.hedspi.aims.media.CompactDisc;
@@ -40,7 +39,6 @@ public class MediaStore extends JPanel {
         	if(media instanceof DigitalVideoDisc) {
         		playButton.addActionListener(new PlayDVDListener());
         	}
-        	
         	if(media instanceof CompactDisc) {
         		playButton.addActionListener(new PlayCDListener());
         	}
