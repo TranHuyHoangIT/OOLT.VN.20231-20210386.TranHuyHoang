@@ -119,16 +119,17 @@ public class CartController {
     	}
 	}
 
-    @FXML
-    void btnRemovePressed(ActionEvent event) {
-    	Media media = tblMedia.getSelectionModel().getSelectedItem();
-    	cart.removeMedia(media);
-    }
-    
     void setTotalCost() {
     	costLabel.setText(cart.totalCost() + " $");
     }
     
+    @FXML
+    void btnRemovePressed(ActionEvent event) {
+    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+    	cart.removeMedia(media);
+    	setTotalCost();
+    }
+   
     @FXML
     public void initialize() {
     	colMediaId.setCellValueFactory(
