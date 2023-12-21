@@ -26,10 +26,10 @@
                               <Font size="13.0" />
                            </font>
                            <toggleGroup>
-                              <ToggleGroup fx:id="Radio" />
+                              <ToggleGroup fx:id="selectTool" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#setEraser" selected="true" text="Eraser" toggleGroup="$Radio">
+                        <RadioButton layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#setEraser" text="Eraser" toggleGroup="$selectTool">
                            <font>
                               <Font size="13.0" />
                            </font>

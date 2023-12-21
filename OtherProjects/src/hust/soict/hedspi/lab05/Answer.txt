@@ -1,0 +1,5 @@
+Trần Huy Hoàng 20210386
+
+The Aims class must be updated to handle any exceptions generated when the play() methods are called. What happens when you don’t update for them to catch?
+
+=> Nếu không update Aims class thì sẽ bị lỗi "Unhandled exception type PlayerException", khi đó các PlayerException sẽ được ném ra bởi play() nhưng không được bắt và xử lý. 

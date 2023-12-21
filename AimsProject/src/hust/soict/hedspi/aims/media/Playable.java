@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
-public interface Playable {
-	public void play();
+import hust.soict.hedspi.aims.exception.PlayerException;
+
+public interface Playable  {
+	public void play() throws PlayerException;
 }

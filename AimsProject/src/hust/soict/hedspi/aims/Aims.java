@@ -2,7 +2,9 @@ package hust.soict.hedspi.aims;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
@@ -52,7 +54,7 @@ public class Aims {
 		System.out.println("===============================");
 		System.out.println("Please choose a number: 0-1-2-3-4-5");
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		try (Scanner s = new Scanner(System.in)) {
 			Store store = new Store();
 			Cart cart = new Cart();
@@ -81,14 +83,26 @@ public class Aims {
 										mediaDetailsMenu();
 										int mediaDetailsMenuChoice = s.nextInt();
 										if (mediaDetailsMenuChoice == 1) {
-											cart.addMedia(item);
+											try {
+												cart.addMedia(item);
+											} catch (Exception e) {
+												System.out.println(e.getMessage());
+											}
 										} else if (mediaDetailsMenuChoice == 2) {
 											if (item instanceof DigitalVideoDisc) {
 												DigitalVideoDisc dvd = (DigitalVideoDisc) item;
-											    dvd.play();
+											    try {
+													dvd.play();
+												} catch (PlayerException e) {
+													System.out.println(e.getMessage());
+												}
 											} else if (item instanceof CompactDisc) {
 												CompactDisc cd = (CompactDisc) item;
-												cd.play();
+												try {
+													cd.play();
+												} catch (PlayerException e) {
+													System.out.println(e.getMessage());
+												}
 											} else {
 												System.out.println("Can't play with this type of media.");
 											}
@@ -108,7 +122,11 @@ public class Aims {
 							int flag = 0;
 							for (Media item : store.getItemsInStore()) {
 								if (item.getTitle().compareTo(title) == 0) {
-									cart.addMedia(item);
+									try {
+										cart.addMedia(item);
+									} catch (Exception e) {
+										System.out.println(e.getMessage());
+									}
 									flag = 1;
 									break;
 								}
@@ -123,10 +141,18 @@ public class Aims {
 								if (item.getTitle().compareTo(title) == 0) {
 									if (item instanceof DigitalVideoDisc) {
 										DigitalVideoDisc dvd = (DigitalVideoDisc) item;
-									    dvd.play();
+									    try {
+											dvd.play();
+										} catch (PlayerException e) {
+											System.out.println(e.getMessage());
+										}
 									} else if (item instanceof CompactDisc) {
 										CompactDisc cd = (CompactDisc) item;
-										cd.play();
+										try {
+											cd.play();
+										} catch (PlayerException e) {
+											System.out.println(e.getMessage());
+										}
 									} else {
 										System.out.println("Can't play with book.");
 									}
@@ -202,10 +228,18 @@ public class Aims {
 											System.out.println(item instanceof CompactDisc);
 											if (item instanceof DigitalVideoDisc) {
 												DigitalVideoDisc dvd = (DigitalVideoDisc) item;
-											    dvd.play();
+											    try {
+													dvd.play();
+												} catch (PlayerException e) {
+													System.out.println(e.getMessage());
+												}
 											} else if (item instanceof CompactDisc) {
 												CompactDisc cd = (CompactDisc) item;
-												cd.play();
+												try {
+													cd.play();
+												} catch (PlayerException e) {
+													System.out.println(e.getMessage());
+												}
 											} else {
 												System.out.println("Can't play with book.");
 											}
@@ -379,10 +413,18 @@ public class Aims {
 								if (item.getTitle().compareTo(title) == 0) {
 									if (item instanceof DigitalVideoDisc) {
 										DigitalVideoDisc dvd = (DigitalVideoDisc) item;
-									    dvd.play();
+									    try {
+											dvd.play();
+										} catch (PlayerException e) {
+											System.out.println(e.getMessage());
+										}
 									} else if (item instanceof CompactDisc) {
 										CompactDisc cd = (CompactDisc) item;
-										cd.play();
+										try {
+											cd.play();
+										} catch (PlayerException e) {
+											System.out.println(e.getMessage());
+										}
 									} else {
 										System.out.println("Can't play with this type of media.");
 									}

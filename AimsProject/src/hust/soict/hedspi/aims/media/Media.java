@@ -70,14 +70,45 @@ public abstract class Media {
 	public void printDetail() {
 		System.out.printf("%s - %s: %f $\n", this.getTitle(), this.getCategory(), this.getCost());
 	}
-
-	public boolean equals(Object obj) throws NullPointerException, ClassCastException {
-		if (obj == null) {
-			throw new NullPointerException("Object is null!");
-		} else if (!(obj instanceof Media)) {
-			throw new ClassCastException("Object is not Media!");
-		}
-		Media media = (Media) obj;
-		return this.title.equalsIgnoreCase(media.title);
-	}
+	
+	public boolean equals(Object obj) throws ClassCastException {
+		if(obj == null) return false;
+		try {
+			Media objTmp = (Media) obj;
+            if (objTmp.getTitle().equals(this.title) && objTmp.getCost() == this.cost) {
+            	return true;
+            }
+            else return false;
+		} catch (ClassCastException e) {
+			throw e;
+        }
+    }
+	
+	public int compareTo(Media obj) throws NullPointerException {
+        try {
+            for (int i = 0; i < this.title.length() && i < obj.getTitle().length(); i++) {
+                if ((int) this.title.charAt(i) == (int) obj.getTitle().charAt(i)) {
+                    continue;
+                } else {
+                    return ((int) this.title.charAt(i) - (int) obj.getTitle().charAt(i));
+                }
+            }
+            if (!(this.title.length() == obj.getTitle().length())) {
+                return (this.title.length() - obj.getTitle().length());
+            }
+            for (int i = 0; i < this.category.length() && i < obj.getCategory().length(); i++) {
+                if ((int) this.category.charAt(i) == (int) obj.getCategory().charAt(i)) {
+                    continue;
+                } else {
+                    return ((int) this.category.charAt(i) - (int) obj.getTitle().charAt(i));
+                }
+            }
+            if (!(this.category.length() == obj.getCategory().length())) {
+                return (this.category.length() - obj.getCategory().length());
+            }
+            return 0;
+        } catch (NullPointerException e) {
+            throw e;
+        }
+    }
 }

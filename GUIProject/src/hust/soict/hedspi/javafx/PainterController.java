@@ -12,7 +12,7 @@ public class PainterController {
     @FXML
     private Pane drawingAreaPane;
     
-    private boolean pen;
+    private boolean pen = true;
 
     @FXML
     void clearButtonPressed(ActionEvent event) {
